@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="email">E-Mail</string>
+    <string name="new_contact">New Contact</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="avatar">Avatar</string>
+    <string name="modify_contact">Edit Contact</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="delete_contact">Delete Contact</string>
+    <string name="delete_contact_msg">Do you want to delete contact %s?</string>
+</resources>
