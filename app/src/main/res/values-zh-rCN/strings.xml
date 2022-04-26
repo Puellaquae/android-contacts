@@ -15,4 +15,10 @@
     <string name="delete">删除</string>
     <string name="delete_contact">删除联系人</string>
     <string name="delete_contact_msg">您确定要删除联系人%s吗?</string>
+    <string name="call">电话</string>
+    <string name="call_missed">未接电话</string>
+    <string name="call_out">去电</string>
+    <string name="call_in">来电</string>
+    <string name="call_rejected">拒绝的来电</string>
+    <string name="calllog_permission_info">如果你想要显示与联系人间的通话，你可以允许程序获取通话记录权限</string>
 </resources>

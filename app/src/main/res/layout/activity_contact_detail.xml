@@ -19,9 +19,19 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
             app:menu="@menu/detail_menu"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:title="@string/app_name" />
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24">
+
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contact_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="48dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/edit_contact_button"

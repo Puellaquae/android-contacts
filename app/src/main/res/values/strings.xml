@@ -14,4 +14,11 @@
     <string name="delete">Delete</string>
     <string name="delete_contact">Delete Contact</string>
     <string name="delete_contact_msg">Do you want to delete contact %s?</string>
+    <string name="title_transition_name" translatable="false">contact_name</string>
+    <string name="call">Call</string>
+    <string name="call_missed">Missed Call</string>
+    <string name="call_out">Outgoing Call</string>
+    <string name="call_in">Incoming Call</string>
+    <string name="call_rejected">Incoming Call</string>
+    <string name="calllog_permission_info">You can allow Call Logs permission for this app if you want show the call logs related to the contact.</string>
 </resources>

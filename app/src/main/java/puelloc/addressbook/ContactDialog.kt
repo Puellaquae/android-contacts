@@ -12,11 +12,12 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import puelloc.addressbook.data.Address
+import puelloc.addressbook.databinding.ContactDialogBinding
 
 class ContactDialog(
-    private val addressDB: AddressDB,
+    private val addressVM: AddressListViewModel,
     private val isChange: Boolean = false,
-    private val positionHint: Int? = null,
     private val oldAddress: Address? = null
 ) :
     DialogFragment() {
@@ -71,11 +72,10 @@ class ContactDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
         return activity?.let {
-            val inflater = requireActivity().layoutInflater
-            val newContact = inflater.inflate(R.layout.contact_dialog, null)
-            val name = newContact.findViewById<TextInputEditText>(R.id.name_input)
-            val phone = newContact.findViewById<TextInputEditText>(R.id.phone_input)
-            val email = newContact.findViewById<TextInputEditText>(R.id.email_input)
+            val newContact = ContactDialogBinding.inflate(requireActivity().layoutInflater)
+            val name = newContact.nameInput
+            val phone = newContact.phoneInput
+            val email = newContact.emailInput
             val dialog = MaterialAlertDialogBuilder(it)
                 .setTitle(
                     if (isChange) {
@@ -84,7 +84,7 @@ class ContactDialog(
                         R.string.modify_contact
                     }
                 )
-                .setView(newContact)
+                .setView(newContact.root)
                 .setNeutralButton(R.string.cancel) { _, _ ->
                     // Do Nothing
                 }.setPositiveButton(R.string.ok) { _, _ ->
@@ -102,12 +102,9 @@ class ContactDialog(
                 email = email
             )
             if (isChange) {
-                addressDB.update(
-                    newAddress,
-                    positionHint!!
-                )
+                addressVM.update(newAddress.copy(id = oldAddress!!.id))
             } else {
-                addressDB.add(newAddress)
+                addressVM.insert(newAddress)
             }
         }
     }
