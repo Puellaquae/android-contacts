@@ -1,9 +1,11 @@
 package puelloc.addressbook
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.WindowCompat
@@ -12,6 +14,7 @@ import puelloc.addressbook.data.AddressDatabase
 import puelloc.addressbook.databinding.ActivityMainBinding
 
 const val CONTACT_FRAGMENT_TAG = "contact dialog"
+var notUseFullScreenDialog = false
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,14 +65,33 @@ class MainActivity : AppCompatActivity() {
         binding!!.newContactButton.setOnClickListener {
             search.clearFocus()
             val dialog = ContactDialog(viewModel)
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction
-                .add(android.R.id.content, dialog)
-                .addToBackStack(CONTACT_FRAGMENT_TAG)
-                .commit()
+            if (notUseFullScreenDialog) {
+                dialog.show(supportFragmentManager, CONTACT_FRAGMENT_TAG)
+            } else {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction
+                    .add(android.R.id.content, dialog)
+                    .addToBackStack(CONTACT_FRAGMENT_TAG)
+                    .commit()
+            }
         }
 
         FastScrollerBuilder(binding!!.addressesList).setPadding(0, 16, 0, 64).useMd2Style().build()
+
+        binding!!.topAppBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_debug -> {
+                    val intent = Intent(applicationContext, InfoActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        Utils.requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { }
     }
 
     override fun onBackPressed() {

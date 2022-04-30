@@ -11,11 +11,11 @@ interface AddressDao {
     @Query("SELECT * FROM address ORDER BY ruby LIMIT 1 OFFSET :index ")
     fun getAddress(index: Int): Flow<Address>
 
-    @Query("SELECT * FROM address WHERE name LIKE :query OR phone LIKE :query OR email LIKE :query OR ruby LIKE :query ORDER BY ruby")
+    @Query("SELECT * FROM address WHERE name LIKE :query OR phone LIKE :query OR email LIKE :query OR ruby LIKE :query OR customs LIKE :query ORDER BY ruby")
     fun search(query: String): Flow<List<Address>>
 
     @Query("SELECT COUNT(*) FROM address")
-    fun getCount(): Int
+    fun getCount(): Flow<Int>
 
     @Insert
     fun insert(address: Address)
@@ -25,6 +25,9 @@ interface AddressDao {
 
     @Delete
     fun delete(address: Address)
+
+    @Query("DELETE FROM address")
+    fun deleteAll()
 
     @Update
     fun update(address: Address)

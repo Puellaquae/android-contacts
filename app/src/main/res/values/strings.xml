@@ -14,11 +14,22 @@
     <string name="delete">Delete</string>
     <string name="delete_contact">Delete Contact</string>
     <string name="delete_contact_msg">Do you want to delete contact %s?</string>
-    <string name="title_transition_name" translatable="false">contact_name</string>
     <string name="call">Call</string>
     <string name="call_missed">Missed Call</string>
     <string name="call_out">Outgoing Call</string>
     <string name="call_in">Incoming Call</string>
     <string name="call_rejected">Incoming Call</string>
     <string name="calllog_permission_info">You can allow Call Logs permission for this app if you want show the call logs related to the contact.</string>
+    <string name="debug">Debug</string>
+    <string name="debug_page">Contacts Debug Utils</string>
+    <string name="database_size">Has %d items in database.</string>
+    <string name="add_10_random_items">Add 10 Random Contacts</string>
+    <string name="add_100_random_items">Add 100 Random Contacts</string>
+    <string name="add_1000_random_items">Add 1000 Random Contacts</string>
+    <string name="added_random_items">%d Random Contacts Have Been Added</string>
+    <string name="new_custom_item">New Custom Item</string>
+    <string name="tag">Tag</string>
+    <string name="value">Value</string>
+    <string name="use_fullscreen_dialog">Use FullScreen Dialog</string>
+    <string name="delete_all">Delete All Contacts</string>
 </resources>

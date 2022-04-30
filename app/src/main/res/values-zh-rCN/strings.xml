@@ -21,4 +21,16 @@
     <string name="call_in">来电</string>
     <string name="call_rejected">拒绝的来电</string>
     <string name="calllog_permission_info">如果你想要显示与联系人间的通话，你可以允许程序获取通话记录权限</string>
+    <string name="debug">调试</string>
+    <string name="debug_page">通讯录调试工具</string>
+    <string name="database_size">数据库中共有%d条数据</string>
+    <string name="add_100_random_items">添加100条随机联系人</string>
+    <string name="add_10_random_items">添加10条随机联系人</string>
+    <string name="add_1000_random_items">添加1000条随机联系人</string>
+    <string name="added_random_items">%d条随机联系人添加完成</string>
+    <string name="new_custom_item">添加自定义项</string>
+    <string name="tag">名称</string>
+    <string name="value">内容</string>
+    <string name="use_fullscreen_dialog">使用全屏对话框</string>
+    <string name="delete_all">删除所有联系人</string>
 </resources>

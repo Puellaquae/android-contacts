@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/code/android/AddressBook/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.403" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.22" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/drawable/line.xml" value="0.1795" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/drawable/thumb.xml" value="0.1795" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/activity_contact_detail.xml" value="0.2140625" />
+        <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/activity_info.xml" value="0.4036458333333333" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/address_item.xml" value="0.264" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/address_view.xml" value="0.25364583333333335" />
@@ -14,6 +16,7 @@
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/contact_dialog.xml" value="0.4036458333333333" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/contact_fullscreen.xml" value="0.2140625" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/contact_item.xml" value="0.4" />
+        <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/custom_contact_item_input.xml" value="0.6465816917728853" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/new_contact_dialog.xml" value="0.4036458333333333" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/layout/new_contact_fullscreen.xml" value="0.4036458333333333" />
         <entry key="..\:/code/android/AddressBook/app/src/main/res/menu/appbar_menu.xml" value="0.4036458333333333" />

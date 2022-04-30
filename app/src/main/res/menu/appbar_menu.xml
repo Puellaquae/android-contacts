@@ -8,4 +8,9 @@
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView"/>
+    <item
+        android:id="@+id/action_debug"
+        android:icon="@drawable/ic_baseline_pest_control_24"
+        android:title="@string/debug"
+        app:showAsAction="ifRoom" />
 </menu>

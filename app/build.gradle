@@ -71,4 +71,6 @@ dependencies {
     implementation 'com.belerweb:pinyin4j:2.5.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
 }

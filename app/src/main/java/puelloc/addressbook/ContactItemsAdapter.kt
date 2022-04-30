@@ -2,7 +2,9 @@ package puelloc.addressbook
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.provider.CallLog
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,6 +38,9 @@ fun Address.getContactItems(context: Context): List<ContactItem> {
         list.add(TAG_EMAIL to email)
     }
     list.add(TAG_RUBY to ruby)
+    for (pair in customs) {
+        list.add(pair.tag to pair.value)
+    }
     val checkPermissionResult = context.checkSelfPermission(Manifest.permission.READ_CALL_LOG)
     if (checkPermissionResult == PackageManager.PERMISSION_GRANTED) {
         val projection = arrayOf(
@@ -91,6 +96,17 @@ val TAG_MAP: Map<String, Pair<Int, Int>> = mapOf(
     TAG_CALL to (R.string.call to R.drawable.ic_baseline_phone_24),
 )
 
+val TAG_ACTION: Map<String, ((context: Context, value: String) -> Unit)> = mapOf(
+    TAG_PHONE to { context, value ->
+        Utils.needPermission(context, Manifest.permission.CALL_PHONE)
+        val checkPermissionRes = context.checkSelfPermission(Manifest.permission.CALL_PHONE)
+        if (checkPermissionRes == PackageManager.PERMISSION_GRANTED) {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$value"))
+            context.startActivity(intent)
+        }
+    }
+)
+
 class ContactItemsAdapter :
     ListAdapter<ContactItem, ContactItemsAdapter.ContactItemViewHolder>(DiffCallback) {
     companion object {
@@ -109,6 +125,11 @@ class ContactItemsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ContactItem) {
             binding.itemValue.text = item.second
+            if (TAG_ACTION.containsKey(item.first)) {
+                binding.root.setOnClickListener {
+                    TAG_ACTION[item.first]?.invoke(binding.root.context, item.second)
+                }
+            }
             if (TAG_MAP.containsKey(item.first)) {
                 val (strId, drawableId) = TAG_MAP[item.first]!!
                 binding.itemTag.setText(strId)

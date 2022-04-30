@@ -28,6 +28,10 @@ class AddressListViewModel(private val addressDao: AddressDao) : ViewModel() {
         return addressDao.getAddressById(id).asLiveData()
     }
 
+    fun size(): LiveData<Int> {
+        return addressDao.getCount().asLiveData()
+    }
+
     fun update(address: Address) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -48,6 +52,14 @@ class AddressListViewModel(private val addressDao: AddressDao) : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 addressDao.delete(address)
+            }
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                addressDao.deleteAll()
             }
         }
     }
