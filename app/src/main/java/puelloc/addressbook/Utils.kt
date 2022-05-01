@@ -7,9 +7,12 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import kotlin.random.Random
 
 class Utils {
     companion object {
+        val random = Random(20220501)
+
         fun giveMeAChineseName(): String {
             val familyNames = ("赵钱孙李周吴郑王" +
                     "冯陈褚卫蒋沈韩杨" +
@@ -129,7 +132,7 @@ class Utils {
                     "平佳玲彤芸莉璐云" +
                     "聆芝娟超香英菲涓"
 
-            return familyNames.random() + (1..(1..2).random()).map { names.random() }
+            return familyNames.random(random) + (1..(1..2).random(random)).map { names.random(random) }
                 .joinToString("")
         }
 

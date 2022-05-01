@@ -1,12 +1,10 @@
 package puelloc.addressbook
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -56,6 +54,9 @@ class ContactDialog(
                 else -> false
             }
         }
+
+        (context as Activity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
         return newContact.root
     }
 

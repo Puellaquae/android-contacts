@@ -1,8 +1,8 @@
 package puelloc.addressbook
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import puelloc.addressbook.data.Address
 import puelloc.addressbook.data.AddressDatabase
@@ -48,6 +48,10 @@ class InfoActivity : AppCompatActivity() {
 
         binding.deleteAll.setOnClickListener {
             viewModel.deleteAll()
+        }
+
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
         }
     }
 }

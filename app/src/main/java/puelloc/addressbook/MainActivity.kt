@@ -5,10 +5,14 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import puelloc.addressbook.data.AddressDatabase
 import puelloc.addressbook.databinding.ActivityMainBinding
@@ -25,6 +29,32 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        val originFABBottomMargin =
+            (binding!!.newContactButton.layoutParams as MarginLayoutParams).bottomMargin
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding!!.root) { v: View, insets: WindowInsetsCompat ->
+            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            val layout = v.layoutParams as MarginLayoutParams
+            layout.bottomMargin = imeHeight
+            v.layoutParams = layout
+            insets
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding!!.newContactButton) { v: View, insets: WindowInsetsCompat ->
+            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+            val barHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            if (!imeVisible) {
+                val layout = v.layoutParams as MarginLayoutParams
+                layout.bottomMargin = barHeight + originFABBottomMargin
+                v.layoutParams = layout
+            } else {
+                val layout = v.layoutParams as MarginLayoutParams
+                layout.bottomMargin = originFABBottomMargin
+                v.layoutParams = layout
+            }
+            WindowInsetsCompat.CONSUMED
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)

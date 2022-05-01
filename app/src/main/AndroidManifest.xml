@@ -11,18 +11,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.AddressBook">
         <activity
             android:name=".InfoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactDetailActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".ContactDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

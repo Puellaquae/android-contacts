@@ -5,10 +5,12 @@ import com.google.gson.Gson
 import net.sourceforge.pinyin4j.PinyinHelper
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType
 
 private fun getRuby(str: String): String {
     val format = HanyuPinyinOutputFormat().apply {
         toneType = HanyuPinyinToneType.WITHOUT_TONE
+        vCharType = HanyuPinyinVCharType.WITH_V
     }
     val ruby = str.map {
         val pinyins = PinyinHelper.toHanyuPinyinStringArray(it, format)

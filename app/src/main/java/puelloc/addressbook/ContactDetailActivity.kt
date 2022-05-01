@@ -49,11 +49,15 @@ class ContactDetailActivity : AppCompatActivity() {
                 }
                 binding.editContactButton.setOnClickListener {
                     val dialog = ContactDialog(addressVM, true, address)
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction
-                        .add(android.R.id.content, dialog)
-                        .addToBackStack("contact dialog")
-                        .commit()
+                    if (notUseFullScreenDialog) {
+                        dialog.show(supportFragmentManager, CONTACT_FRAGMENT_TAG)
+                    } else {
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction
+                            .add(android.R.id.content, dialog)
+                            .addToBackStack("contact dialog")
+                            .commit()
+                    }
                 }
             }
         }
@@ -62,6 +66,10 @@ class ContactDetailActivity : AppCompatActivity() {
             finish()
         }
 
-        Utils.needPermission(this, Manifest.permission.READ_CALL_LOG, infoResId = R.string.calllog_permission_info)
+        Utils.needPermission(
+            this,
+            Manifest.permission.READ_CALL_LOG,
+            infoResId = R.string.calllog_permission_info
+        )
     }
 }
