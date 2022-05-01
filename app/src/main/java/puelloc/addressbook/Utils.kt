@@ -7,11 +7,13 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import java.util.*
+import kotlin.collections.HashMap
 import kotlin.random.Random
 
 class Utils {
     companion object {
-        val random = Random(20220501)
+        private val random by lazy { Random(Calendar.getInstance().time.time) }
 
         fun giveMeAChineseName(): String {
             val familyNames = ("赵钱孙李周吴郑王" +
